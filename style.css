@@ -478,7 +478,7 @@ body {
     cursor: pointer;
     margin-left: 6px;
     padding: 2px 8px;
-    font-size: 0.9em;
+    font-size: 0.78em;
     font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
     border: 1px solid var(--accent-color);
     transition: all 0.3s ease;
@@ -800,7 +800,7 @@ body {
 
 .gallery-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     width: 100%;
 }
@@ -1509,7 +1509,7 @@ body {
     }
 
     .gallery-row {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 6px;
     }
 

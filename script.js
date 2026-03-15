@@ -169,7 +169,7 @@ function renderOrganizedGallery(container, landscapeItems, portraitItems, square
     const verticalItems = [...portraitItems];
     
     const rows = [];
-    const ITEMS_PER_ROW = 4;
+    const ITEMS_PER_ROW = 3;
 
     // Helper function to create rows from items
     function createRowsFromItems(items, itemType) {

@@ -81,39 +81,19 @@
                     </div>
                     <div class="research-item">
                         <div class="research-text">
-                            <p class="research-title">Verification of Control Lyapunov and Control Barrier Function Compatibility via Neural Control Certificates (paper in preparation)</p>
+                            <p class="research-title">Neural Control Lyapunov-Barrier Function Synthesis and Verification (paper in preparation)</p>
                             <p class="research-supervisor"><strong>Supervisor:</strong> <a href="http://terrano.ucsd.edu/jorge/" target="_blank" class="professor-link">Prof. Jorge Cortés</a> · <strong>Collaborators:</strong> <a href="https://polmestres.github.io" target="_blank" class="professor-link">Pol Mestres</a>, <a href="https://sylviaherbert.com/azra-begzadic" target="_blank" class="professor-link">Azra Begzadić</a></p>
                             <p class="research-meta">University of California, San Diego · September 2025 – Present</p>
                             <p class="research-description">
-                                Ensuring compatibility between Control Lyapunov Functions (CLFs) and Control Barrier Functions (CBFs) is essential for synthesizing controllers that guarantee both stability and safety. However, even when candidate certificates are available, it remains difficult to formally verify that the CLF and CBF constraints are simultaneously satisfiable over a compact domain, especially in nonlinear or high-dimensional systems. Existing formal tools such as sum-of-squares (SOS) programming, symbolic reasoning, mixed-integer programming (MIP), and satisfiability modulo theories (SMT) either fail to scale efficiently or rely on restrictive structural assumptions. At the same time, neural networks (NNs) provide a flexible and expressive function class for constructing candidate certificates but lack principled verification guarantees.
-                                <span class="research-more" id="research-more-2"> In this work, we develop a sound and scalable verification framework for certifying the compatibility of CLF and CBF certificates under a fixed candidate controller. By reformulating the joint stability and safety requirement as a residual inequality decision problem, the proposed approach avoids the need for quantifier elimination, specifically the explicit treatment of "for all states, there exists a control input" constraints. This enables direct numerical certification over compact domains. Our method combines partition-based residual bounding with a neural bounding oracle to produce a formal certificate or find concrete counterexamples.</span>
+                                We present a framework for jointly synthesizing and formally verifying neural Control Lyapunov-Barrier Function (CLF-CBF) certificates for nonlinear control-affine systems. A neural CLF-CBF pair is first trained to encode stability and safety, then verified across the entire state space by computing provable bounds on a compatibility margin—quantifying whether both conditions can be simultaneously satisfied under bounded control—using CROWN-based convex relaxation.
+                                <span class="research-more" id="research-more-2"> The two stages are unified through a counterexample-guided loop: regions where verification fails are extracted and used to retrain the certificates until formal guarantees are achieved. An adaptive state-space partitioner with gradient-sensitive splitting keeps the verification tractable, and composite barrier functions enable obstacle-rich environments.</span>
                                 <button type="button" class="research-toggle" data-target="research-more-2" aria-expanded="false" aria-controls="research-more-2">Show More</button>
                             </p>
                         </div>
                         <div class="research-image-wrapper">
                             <div class="research-image-frame">
-                                <img src="framework.png" alt="Verification framework for CLF and CBF compatibility" class="research-image">
+                                <img src="traj_all.gif" alt="CLF-CBF trajectory visualization" class="research-image">
                             </div>
-                            <p class="research-image-caption">Verification framework overview</p>
-                        </div>
-                    </div>
-                    <div class="research-item">
-                        <div class="research-text">
-                            <p class="research-title">MURO Lab Research</p>
-                            <p class="research-supervisor"><strong>Supervisor:</strong> <a href="http://terrano.ucsd.edu/jorge/" target="_blank" class="professor-link">Prof. Jorge Cortés</a></p>
-                            <p class="research-meta">MURO Lab, University of California, San Diego · July 2024 – June 2025 · La Jolla, United States</p>
-                            <p class="research-description">
-                                <strong>Cyclic Pursuit on Crazyflies</strong><br>
-                                ○ Built a real-time simulator for nonholonomic multi-drone circular-motion systems, implementing equilibrium configurations under beacon-referenced control laws.<br>
-                                ○ Programmed the physics engine utilizing the Runge-Kutta 4 algorithms to model nonholonomic drones constraints and motion dynamics.<br>
-                                ○ Designed a modular communication architecture using the publisher-subscriber pattern to handle real-time control inputs and coordinate updates efficiently.<br>
-                                ○ Developed live visualization tools to plot trajectories and verify the stability and convergence of control laws for beacon-referenced circular motion.<br>
-                                ○ Assisted in integrating OptiTrack motion-capture data, enabling position and orientation feedback for cyclic-pursuit experiments.<br><br>
-                                <strong>CLF and CBF</strong><br>
-                                ○ Built a CLF–CBF polynomial synthesis framework that uses Sum-of-Squares (SOS) optimization to search for Lyapunov and Barrier function candidates separately.<br>
-                                ○ Constructed and analyzed a hierarchy of systems, progressing from low-dimensional dynamics to higher-dimensional models, with systematic testing across multiple safe-set geometries.<br>
-                                ○ Developed a simulation and visualization pipeline, including Gazebo-based environments and tools for trajectory, safety, and control evaluation.
-                            </p>
                         </div>
                     </div>
                 </div>
