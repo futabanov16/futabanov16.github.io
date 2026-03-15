@@ -94,6 +94,9 @@ function organizeGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
     if (!galleryGrid) return;
 
+    // Skip if album-editorial.js will handle this page
+    if (galleryGrid.hasAttribute('data-title')) return;
+
     const items = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
     if (items.length === 0) return;
 

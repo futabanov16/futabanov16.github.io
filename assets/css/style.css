@@ -1006,7 +1006,7 @@ body.dark-theme {
     border: 1px solid var(--border-color);
 }
 
-.album-photo {
+.album-cover .album-photo {
     width: 100%;
     height: auto;
     display: block;
@@ -1817,4 +1817,427 @@ body.dark-theme {
         background-position: center top;
         background-attachment: scroll;
     }
+}
+
+/* ============================================
+   Editorial Album Layout
+   ============================================ */
+
+/* Album container - replaces old gallery grid */
+.album-editorial {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+/* Album back link */
+.album-back-link {
+    position: fixed;
+    top: 22px;
+    left: 60px;
+    z-index: 999;
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    transition: color 0.3s ease;
+}
+
+.album-back-link:hover {
+    color: var(--accent-color);
+}
+
+/* Hero cover section */
+.album-hero {
+    position: relative;
+    width: 100%;
+    max-height: 35vh;
+    overflow: hidden;
+    margin-bottom: clamp(40px, 6vw, 80px);
+    transition: opacity 0.1s ease-out;
+}
+
+.album-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.album-hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0,0,0,0.45), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px 48px;
+}
+
+.album-hero-title {
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.15em;
+    margin: 0 0 8px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.album-hero-tagline {
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.08em;
+    margin: 0 0 6px;
+    font-style: italic;
+}
+
+.album-hero-date {
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+/* ---- Photo group layouts ---- */
+.photo-group {
+    margin-bottom: clamp(60px, 8vw, 120px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.photo-group.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger children */
+.photo-group .album-photo:nth-child(2) { transition-delay: 0.15s; }
+.photo-group .album-photo:nth-child(3) { transition-delay: 0.3s; }
+
+/* Individual photo styling */
+.album-editorial .album-photo {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.dark-theme .album-editorial .album-photo {
+    border-color: rgba(255,255,255,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.album-editorial .album-photo:hover {
+    transform: scale(1.015);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.album-editorial .album-photo img {
+    width: 100%;
+    display: block;
+}
+
+/* Photo sequence number */
+.album-editorial .album-photo::after {
+    content: attr(data-seq);
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    font-family: 'EB Garamond', monospace;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Mode A — Full width hero shot */
+.layout-A {
+    display: block;
+}
+
+.layout-A .album-photo {
+    width: 100%;
+    aspect-ratio: auto;
+}
+
+.layout-A .album-photo img {
+    height: auto;
+    object-fit: contain;
+}
+
+/* Mode B — Asymmetric duo (65/32) */
+.layout-B {
+    display: grid;
+    grid-template-columns: 65fr 32fr;
+    gap: 16px;
+    align-items: end;
+}
+
+/* Mode B reversed */
+.layout-B-rev {
+    display: grid;
+    grid-template-columns: 32fr 65fr;
+    gap: 16px;
+    align-items: end;
+}
+
+/* Mode C — Triple equal */
+.layout-C {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    align-items: end;
+}
+
+/* Mode D — Centered small (contemplative) */
+.layout-D {
+    display: flex;
+    justify-content: center;
+}
+
+.layout-D .album-photo {
+    width: 55%;
+    aspect-ratio: auto;
+}
+
+.layout-D .album-photo img {
+    height: auto;
+    object-fit: contain;
+}
+
+/* Mode E — Vertical pair */
+.layout-E {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: end;
+}
+
+/* ---- Interstitial text ---- */
+.interstitial {
+    text-align: center;
+    margin: clamp(40px, 6vw, 80px) 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.interstitial.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.interstitial p {
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ---- Album footer ---- */
+.album-fin {
+    text-align: center;
+    padding: 60px 0 40px;
+    margin-top: 40px;
+}
+
+.album-fin::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--border-color);
+    margin: 0 auto 30px;
+}
+
+.album-fin-text {
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--text-tertiary);
+    margin: 0 0 20px;
+}
+
+.album-fin .back-link {
+    font-size: 0.9rem;
+}
+
+/* ---- Album Lightbox ---- */
+.album-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    align-items: center;
+    justify-content: center;
+}
+
+.album-lightbox.active {
+    display: flex;
+}
+
+.album-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+.album-lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+}
+
+.album-lightbox-close::before,
+.album-lightbox-close::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 1.5px;
+    background: rgba(255,255,255,0.7);
+    transition: background 0.3s;
+}
+
+.album-lightbox-close::before { transform: rotate(45deg); }
+.album-lightbox-close::after { transform: rotate(-45deg); }
+.album-lightbox-close:hover::before,
+.album-lightbox-close:hover::after { background: #fff; }
+
+.album-lightbox-prev,
+.album-lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: color 0.3s;
+    user-select: none;
+    font-family: 'EB Garamond', serif;
+}
+
+.album-lightbox-prev:hover,
+.album-lightbox-next:hover { color: #fff; }
+.album-lightbox-prev { left: 20px; }
+.album-lightbox-next { right: 20px; }
+
+/* ---- Responsive ---- */
+@media screen and (max-width: 768px) {
+    .album-hero {
+        aspect-ratio: 16 / 9;
+    }
+
+    .album-hero-overlay {
+        padding: 24px 28px;
+    }
+
+    .album-hero-title {
+        font-size: 1.8rem;
+    }
+
+    .layout-B,
+    .layout-B-rev {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .layout-C {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .layout-D .album-photo {
+        width: 70%;
+    }
+
+    .layout-E {
+        max-width: 100%;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .album-hero {
+        aspect-ratio: 16 / 9;
+        margin-bottom: 40px;
+    }
+
+    .album-hero-overlay {
+        padding: 16px 20px;
+    }
+
+    .album-hero-title {
+        font-size: 1.4rem;
+        letter-spacing: 0.08em;
+    }
+
+    .album-hero-tagline {
+        font-size: 0.82rem;
+    }
+
+    .album-editorial {
+        padding: 0 12px 40px;
+    }
+
+    .photo-group {
+        margin-bottom: clamp(40px, 6vw, 60px);
+    }
+
+    .layout-B,
+    .layout-B-rev,
+    .layout-C,
+    .layout-E {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .layout-C .album-photo {
+        aspect-ratio: auto;
+    }
+
+    .layout-D .album-photo {
+        width: 90%;
+    }
+
+    .layout-E .album-photo {
+        aspect-ratio: auto;
+    }
+
+    .interstitial p {
+        font-size: 0.95rem;
+    }
+
+    .album-lightbox-prev { left: 8px; padding: 12px; }
+    .album-lightbox-next { right: 8px; padding: 12px; }
 }

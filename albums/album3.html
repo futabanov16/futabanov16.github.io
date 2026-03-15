@@ -10,41 +10,32 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/album-editorial.js" defer></script>
 </head>
 <body class="light-theme">
     <canvas id="petalCanvas"></canvas>
-    <div class="hero-background" id="heroBackground">
-        <img src="../assets/images/hero-light.png" alt="Background" class="hero-image" id="heroImage">
-        <div class="hero-overlay"></div>
-    </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
     </button>
-    <div class="container">
-        <header class="header">
-            <div class="gallery-header">
-                <a href="../gallery.html" class="back-link">← Back to Gallery</a>
-                <h1 class="gallery-title">Irvine</h1>
-            </div>
-        </header>
 
-        <main class="gallery-content">
-            <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item">
-                    <img src="../photos/irvine/FB35AD20-E6A0-435A-B89C-8F79B2F52E43_1_105_c.jpeg" alt="Irvine Photo 1" class="gallery-image">
-                </div>
-                <div class="gallery-item">
-                    <img src="../photos/irvine/DA97550E-C68C-4B06-9A3D-D03B9D3E780B_1_105_c.jpeg" alt="Irvine Photo 2" class="gallery-image">
-                </div>
-                <div class="gallery-item">
-                    <img src="../photos/irvine/AEE32DB8-08B8-4470-B939-839FADF5F2FE_1_105_c.jpeg" alt="Irvine Photo 3" class="gallery-image">
-                </div>
-                <div class="gallery-item">
-                    <img src="../photos/irvine/9192AB1F-411E-4DA6-9DCC-77B5F4F0F8D9_1_105_c.jpeg" alt="Irvine Photo 4" class="gallery-image">
-                </div>
-            </div>
-        </main>
+    <div id="galleryGrid"
+         data-title="Irvine"
+         data-tagline="Jacaranda season in Southern California"
+         data-date="May 2025"
+         data-cover="../photos/irvine/9192AB1F-411E-4DA6-9DCC-77B5F4F0F8D9_1_105_c.jpeg"
+         data-interstitials="">
+        <div class="gallery-item">
+            <img src="../photos/irvine/FB35AD20-E6A0-435A-B89C-8F79B2F52E43_1_105_c.jpeg" alt="Irvine Photo 1" class="gallery-image">
+        </div>
+        <div class="gallery-item">
+            <img src="../photos/irvine/DA97550E-C68C-4B06-9A3D-D03B9D3E780B_1_105_c.jpeg" alt="Irvine Photo 2" class="gallery-image">
+        </div>
+        <div class="gallery-item">
+            <img src="../photos/irvine/AEE32DB8-08B8-4470-B939-839FADF5F2FE_1_105_c.jpeg" alt="Irvine Photo 3" class="gallery-image">
+        </div>
+        <div class="gallery-item">
+            <img src="../photos/irvine/9192AB1F-411E-4DA6-9DCC-77B5F4F0F8D9_1_105_c.jpeg" alt="Irvine Photo 4" class="gallery-image">
+        </div>
     </div>
 </body>
 </html>
-

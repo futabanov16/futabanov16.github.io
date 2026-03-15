@@ -10,38 +10,29 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/album-editorial.js" defer></script>
 </head>
 <body class="light-theme">
     <canvas id="petalCanvas"></canvas>
-    <div class="hero-background" id="heroBackground">
-        <img src="../assets/images/hero-light.png" alt="Background" class="hero-image" id="heroImage">
-        <div class="hero-overlay"></div>
-    </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
     </button>
-    <div class="container">
-        <header class="header">
-            <div class="gallery-header">
-                <a href="../gallery.html" class="back-link">← Back to Gallery</a>
-                <h1 class="gallery-title">Geisel Library</h1>
-            </div>
-        </header>
 
-        <main class="gallery-content">
-            <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item">
-                    <img src="../photos/ucsd/D061F0D2-16A3-4898-A7F4-9B0561FC59BB.jpeg" alt="Geisel Library Photo 1" class="gallery-image">
-                </div>
-                <div class="gallery-item">
-                    <img src="../photos/ucsd/4F05FE50-FA35-468B-8BDB-AF0A3D90C9AC.jpeg" alt="Geisel Library Photo 2" class="gallery-image">
-                </div>
-                <div class="gallery-item">
-                    <img src="../photos/ucsd/42152907-1BF8-450D-BCC4-F241F186780D.jpeg" alt="Geisel Library Photo 3" class="gallery-image">
-                </div>
-            </div>
-        </main>
+    <div id="galleryGrid"
+         data-title="Geisel Library"
+         data-tagline="The iconic brutalist landmark of UC San Diego"
+         data-date="August 2024"
+         data-cover="../photos/ucsd/42152907-1BF8-450D-BCC4-F241F186780D.jpeg"
+         data-interstitials="">
+        <div class="gallery-item">
+            <img src="../photos/ucsd/D061F0D2-16A3-4898-A7F4-9B0561FC59BB.jpeg" alt="Geisel Library Photo 1" class="gallery-image">
+        </div>
+        <div class="gallery-item">
+            <img src="../photos/ucsd/4F05FE50-FA35-468B-8BDB-AF0A3D90C9AC.jpeg" alt="Geisel Library Photo 2" class="gallery-image">
+        </div>
+        <div class="gallery-item">
+            <img src="../photos/ucsd/42152907-1BF8-450D-BCC4-F241F186780D.jpeg" alt="Geisel Library Photo 3" class="gallery-image">
+        </div>
     </div>
 </body>
 </html>
-
