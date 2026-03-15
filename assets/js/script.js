@@ -4,7 +4,7 @@ const body = document.body;
 const themeIcon = themeToggle.querySelector('.theme-icon');
 
 // Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
+const currentTheme = localStorage.getItem('theme') || 'dark';
 body.classList.add(currentTheme + '-theme');
 
 // Update icon based on current theme
@@ -17,10 +17,10 @@ if (currentTheme === 'dark') {
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('light-theme');
     body.classList.toggle('dark-theme');
-    
+
     const isDark = body.classList.contains('dark-theme');
     themeIcon.textContent = isDark ? '☀️' : '🌙';
-    
+
     // Save theme preference
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
