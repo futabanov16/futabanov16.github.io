@@ -301,6 +301,10 @@ body.dark-theme {
     margin-top: -40px;
 }
 
+.name-cn {
+    font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+}
+
 .name {
     font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
     font-size: 2.6em;
@@ -1414,7 +1418,6 @@ body.dark-theme {
     padding: 28px 20px;
     margin-top: 40px;
     border-top: none;
-    background-color: var(--bg-primary);
     position: relative;
 }
 
@@ -1727,7 +1730,7 @@ body.dark-theme {
     }
 
     .gallery-row {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 4px;
     }
 
