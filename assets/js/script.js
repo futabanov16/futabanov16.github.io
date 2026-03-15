@@ -477,3 +477,118 @@ initResearchToggles();
     init();
 })();
 
+// ============================================
+// Neko Cat - chases mouse (light theme only)
+// Uses 4 sprite images with CSS animations
+// sit: resting, idle: facing front, love: near mouse, run: chasing
+// ============================================
+(function () {
+    // Detect path prefix (for album pages in /albums/)
+    const scripts = document.querySelectorAll('script[src*="script.js"]');
+    const scriptSrc = scripts.length ? scripts[0].getAttribute('src') : '';
+    const prefix = scriptSrc.replace('assets/js/script.js', '').replace('../assets/js/script.js', '../');
+
+    const v = '?v=5';
+    const lightPaths = {
+        idle: prefix + 'assets/images/cat-idle.png' + v,
+        love: prefix + 'assets/images/cat-love.png' + v,
+        run: prefix + 'assets/images/cat-run.png' + v,
+        runRight: prefix + 'assets/images/cat-run-right.png' + v,
+    };
+    const darkPaths = {
+        idle: prefix + 'assets/images/cat-dark-idle.png' + v,
+        love: prefix + 'assets/images/cat-dark-love.png' + v,
+        run: prefix + 'assets/images/cat-dark-run.png' + v,
+        runRight: prefix + 'assets/images/cat-dark-run-right.png' + v,
+    };
+
+    // Preload all
+    [lightPaths, darkPaths].forEach(paths => {
+        Object.values(paths).forEach(src => { const i = new Image(); i.src = src; });
+    });
+
+    function getPaths() {
+        return document.body.classList.contains('dark-theme') ? darkPaths : lightPaths;
+    }
+
+    const cat = document.createElement('div');
+    cat.id = 'neko';
+    const catImg = document.createElement('img');
+    catImg.src = getPaths().idle;
+    catImg.alt = '';
+    cat.appendChild(catImg);
+    document.body.appendChild(cat);
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let catX = mouseX;
+    let catY = mouseY;
+    let catVX = 0;
+    let catVY = 0;
+    let idleTime = 0;
+    let currentState = '';
+
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        idleTime = 0;
+    });
+
+    let lastTheme = '';
+
+    function setState(newState, flip) {
+        const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+        if (currentState !== newState || theme !== lastTheme) {
+            currentState = newState;
+            lastTheme = theme;
+            catImg.src = getPaths()[newState];
+            cat.className = 'neko-' + newState;
+        }
+        if (flip) {
+            cat.classList.add('neko-flip');
+        } else {
+            cat.classList.remove('neko-flip');
+        }
+    }
+
+    function update() {
+        cat.style.display = 'block';
+
+        const dx = mouseX - catX;
+        const dy = mouseY - catY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > 60) {
+            // Chase mouse
+            const speed = Math.min(dist * 0.014, 1.75);
+            catVX += (dx / dist) * speed * 0.14;
+            catVY += (dy / dist) * speed * 0.14;
+            idleTime = 0;
+            setState(catVX < -0.5 ? 'run' : 'runRight', false);
+        } else {
+            // Near mouse or stopped
+            catVX *= 0.85;
+            catVY *= 0.85;
+            idleTime++;
+
+            if (idleTime < 80) {
+                setState('love', false);
+            } else {
+                setState('idle', false);
+            }
+        }
+
+        catVX *= 0.89;
+        catVY *= 0.89;
+        catX += catVX;
+        catY += catVY;
+
+        cat.style.left = (catX - 36) + 'px';
+        cat.style.top = (catY + window.scrollY - 36) + 'px';
+
+        requestAnimationFrame(update);
+    }
+
+    update();
+})();
+

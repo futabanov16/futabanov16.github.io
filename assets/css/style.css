@@ -98,6 +98,70 @@ body.dark-theme {
 }
 
 
+/* ---- Neko Cat ---- */
+#neko {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    z-index: 9997;
+    pointer-events: none;
+    transition: none;
+}
+
+#neko img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Sitting - gentle sway */
+#neko.neko-sit img {
+    animation: nekoSway 2.5s ease-in-out infinite;
+}
+
+/* Idle (face front) - breathing */
+#neko.neko-idle img {
+    animation: nekoBreathe 2s ease-in-out infinite;
+}
+
+/* Love - bounce with hearts */
+#neko.neko-love img {
+    animation: nekoBounce 0.6s ease-in-out infinite;
+}
+
+/* Running - bob up and down */
+#neko.neko-run img,
+#neko.neko-runRight img {
+    animation: nekoRun 0.3s ease-in-out infinite;
+}
+
+#neko.neko-flip img {
+    transform: scaleX(-1);
+}
+
+@keyframes nekoSway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes nekoBreathe {
+    0%, 100% { transform: scaleY(1) translateY(0); }
+    50% { transform: scaleY(1.04) translateY(-2px); }
+}
+
+@keyframes nekoBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
+}
+
+@keyframes nekoRun {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-4px) rotate(-2deg); }
+    75% { transform: translateY(-4px) rotate(2deg); }
+}
+
 /* ---- Hero Background ---- */
 .hero-background {
     position: relative;
