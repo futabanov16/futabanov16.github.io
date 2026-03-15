@@ -69,7 +69,11 @@ body {
     line-height: 1.3;
     color: var(--text-primary);
     background-color: var(--bg-secondary);
-    background-image: var(--divider-pattern);
+    background-image: url('../images/light-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     transition: background-color 0.4s ease, color 0.4s ease;
     position: relative;
 }
@@ -82,16 +86,24 @@ body.dark-theme {
     background-repeat: no-repeat;
 }
 
-/* ---- Hero Background ---- */
-.dark-theme .hero-background {
-    background-color: transparent;
+/* ---- Petal Rain Canvas ---- */
+#petalCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    pointer-events: none;
 }
 
+
+/* ---- Hero Background ---- */
 .hero-background {
     position: relative;
     width: 100%;
     overflow: visible;
-    background-color: var(--bg-secondary);
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -115,14 +127,14 @@ body.dark-theme {
 }
 
 .hero-image {
-    width: 80%;
+    width: 70%;
     height: auto;
+    max-height: 360px;
     display: block;
-    object-fit: contain;
-    object-position: top center;
+    object-fit: cover;
+    object-position: center;
     transition: transform 0.1s ease-out, opacity 0.2s ease-out;
     will-change: transform, opacity;
-    filter: sepia(15%) contrast(0.95);
 }
 
 .hero-overlay {
@@ -157,43 +169,14 @@ body.dark-theme {
 }
 
 /* ---- Container ---- */
-.dark-theme .container {
-    background-color: rgba(14, 20, 32, 0.82);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.dark-theme .header,
-.dark-theme .main-content {
-    background-color: transparent;
-}
-
-.dark-theme .research-item,
-.dark-theme .education-item,
-.dark-theme .publication-item {
-    background: rgba(14, 20, 32, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.dark-theme .footer {
-    background-color: rgba(14, 20, 32, 0.82);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.dark-theme .cinema-gallery {
-    background-color: rgba(14, 20, 32, 0.82);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     padding-top: 20px;
-    background-color: var(--bg-primary);
+    background-color: rgba(249, 250, 244, 0.68);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     min-height: 100vh;
     transition: background-color 0.4s ease;
     position: relative;
@@ -202,13 +185,56 @@ body.dark-theme {
     border-right: 1px solid var(--border-color);
 }
 
+.dark-theme .container {
+    background-color: rgba(14, 20, 32, 0.82);
+}
+
+.header,
+.main-content {
+    background-color: transparent;
+}
+
+.research-item,
+.education-item,
+.publication-item {
+    background: rgba(249, 250, 244, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.dark-theme .research-item,
+.dark-theme .education-item,
+.dark-theme .publication-item {
+    background: rgba(14, 20, 32, 0.5);
+}
+
+.footer {
+    background-color: rgba(249, 250, 244, 0.68);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.dark-theme .footer {
+    background-color: rgba(14, 20, 32, 0.82);
+}
+
+.cinema-gallery {
+    background-color: rgba(249, 250, 244, 0.68);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.dark-theme .cinema-gallery {
+    background-color: rgba(14, 20, 32, 0.82);
+}
+
 /* ---- Header ---- */
 .header {
     margin-bottom: 30px;
     padding: 30px;
     padding-top: 50px;
     border-bottom: none;
-    background-color: var(--bg-primary);
+    background-color: transparent;
     border-radius: 0;
     box-shadow: none;
     position: relative;
@@ -356,7 +382,7 @@ body.dark-theme {
     display: flex;
     flex-direction: column;
     gap: 0;
-    background-color: var(--bg-primary);
+    background-color: transparent;
     border-radius: 0;
     padding: 10px 30px 30px;
     box-shadow: none;
@@ -1140,7 +1166,6 @@ body.dark-theme {
     max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
-    background-color: var(--bg-primary);
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
 }
@@ -1708,5 +1733,11 @@ body.dark-theme {
 
     .gallery-item {
         padding: 1px;
+    }
+
+    body.dark-theme {
+        background-image: url('../images/dark-bg-mobile.jpeg');
+        background-size: cover;
+        background-position: center top;
     }
 }

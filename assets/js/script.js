@@ -4,7 +4,7 @@ const body = document.body;
 const themeIcon = themeToggle.querySelector('.theme-icon');
 
 // Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'dark';
+const currentTheme = localStorage.getItem('theme') || 'light';
 body.classList.add(currentTheme + '-theme');
 
 // Update icon based on current theme
@@ -28,29 +28,34 @@ themeToggle.addEventListener('click', () => {
 // Hero background scroll effect with parallax
 const heroBackground = document.getElementById('heroBackground');
 const heroImage = document.getElementById('heroImage');
+const heroVideo = document.getElementById('heroVideo');
 
 function updateHeroEffects() {
-    if (!heroBackground || !heroImage) return;
-    
+    if (!heroBackground) return;
+
     const scrollPosition = window.scrollY;
     const heroHeight = heroBackground.offsetHeight;
     const fadeStart = 0;
-    const fadeEnd = heroHeight * 0.8; // Start fading when scrolled 80% of image height
-    
-    // Parallax effect - background moves slower (0.2x speed for long image)
+    const fadeEnd = heroHeight * 0.8;
+
     const parallaxSpeed = 0.2;
     const parallaxOffset = scrollPosition * parallaxSpeed;
-    heroImage.style.transform = `translateY(${parallaxOffset}px)`;
-    
-    // Opacity fade effect - gradually fade from 1 to 0
+
     let opacity = 1;
     if (scrollPosition >= fadeStart && scrollPosition <= fadeEnd) {
         opacity = 1 - (scrollPosition - fadeStart) / (fadeEnd - fadeStart);
     } else if (scrollPosition > fadeEnd) {
         opacity = 0;
     }
-    
-    heroImage.style.opacity = opacity;
+
+    if (heroImage) {
+        heroImage.style.transform = `translateY(${parallaxOffset}px)`;
+        heroImage.style.opacity = opacity;
+    }
+    if (heroVideo) {
+        heroVideo.style.transform = `translateY(${parallaxOffset}px)`;
+        heroVideo.style.opacity = opacity;
+    }
 }
 
 // Run on scroll
@@ -331,4 +336,144 @@ function initResearchToggles() {
 }
 
 initResearchToggles();
+
+// ============================================
+// Particle Effects: Petals (light) + Snow (dark)
+// ============================================
+(function () {
+    const canvas = document.getElementById('petalCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const PETAL_COUNT = 175;
+    const SNOW_COUNT = 150;
+    let petals = [];
+    let snowflakes = [];
+
+    const petalColors = [
+        'rgba(255, 183, 197, 0.7)',
+        'rgba(255, 160, 180, 0.6)',
+        'rgba(255, 200, 210, 0.65)',
+        'rgba(248, 170, 190, 0.55)',
+        'rgba(255, 220, 230, 0.5)',
+    ];
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    // ---- Petals ----
+    function createPetal() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * -canvas.height,
+            size: Math.random() * 8 + 4,
+            speedY: Math.random() * 1.2 + 0.4,
+            speedX: Math.random() * 0.8 - 0.2,
+            rotation: Math.random() * Math.PI * 2,
+            rotationSpeed: (Math.random() - 0.5) * 0.02,
+            wobble: Math.random() * Math.PI * 2,
+            wobbleSpeed: Math.random() * 0.02 + 0.01,
+            color: petalColors[Math.floor(Math.random() * petalColors.length)],
+            opacity: Math.random() * 0.4 + 0.3,
+        };
+    }
+
+    function drawPetal(p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(p.size * 0.4, -p.size * 0.6, p.size, -p.size * 0.4, p.size * 0.5, p.size * 0.2);
+        ctx.bezierCurveTo(p.size * 0.2, p.size * 0.6, -p.size * 0.2, p.size * 0.4, 0, 0);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function updatePetals() {
+        petals.forEach(p => {
+            p.wobble += p.wobbleSpeed;
+            p.x += p.speedX + Math.sin(p.wobble) * 0.5;
+            p.y += p.speedY;
+            p.rotation += p.rotationSpeed;
+            if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+            if (p.x > canvas.width + 20) p.x = -20;
+            if (p.x < -20) p.x = canvas.width + 20;
+        });
+    }
+
+    // ---- Snowflakes ----
+    function createSnowflake() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * -canvas.height,
+            radius: Math.random() * 2.5 + 0.8,
+            speedY: Math.random() * 0.8 + 0.2,
+            speedX: Math.random() * 0.4 - 0.2,
+            wobble: Math.random() * Math.PI * 2,
+            wobbleSpeed: Math.random() * 0.015 + 0.005,
+            opacity: Math.random() * 0.5 + 0.3,
+        };
+    }
+
+    function drawSnowflake(s) {
+        ctx.save();
+        ctx.globalAlpha = s.opacity;
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function updateSnow() {
+        snowflakes.forEach(s => {
+            s.wobble += s.wobbleSpeed;
+            s.x += s.speedX + Math.sin(s.wobble) * 0.3;
+            s.y += s.speedY;
+            if (s.y > canvas.height + 10) { s.y = -10; s.x = Math.random() * canvas.width; }
+            if (s.x > canvas.width + 10) s.x = -10;
+            if (s.x < -10) s.x = canvas.width + 10;
+        });
+    }
+
+    // ---- Animation loop ----
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const isDark = document.body.classList.contains('dark-theme');
+
+        if (isDark) {
+            updateSnow();
+            snowflakes.forEach(drawSnowflake);
+        } else {
+            updatePetals();
+            petals.forEach(drawPetal);
+        }
+        requestAnimationFrame(animate);
+    }
+
+    function init() {
+        resize();
+        petals = [];
+        snowflakes = [];
+        for (let i = 0; i < PETAL_COUNT; i++) {
+            const p = createPetal();
+            p.y = Math.random() * canvas.height;
+            petals.push(p);
+        }
+        for (let i = 0; i < SNOW_COUNT; i++) {
+            const s = createSnowflake();
+            s.y = Math.random() * canvas.height;
+            snowflakes.push(s);
+        }
+        animate();
+    }
+
+    window.addEventListener('resize', resize);
+    init();
+})();
 
