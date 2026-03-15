@@ -12,97 +12,131 @@
     <script src="script.js" defer></script>
 </head>
 <body class="light-theme">
-    <div class="hero-background" id="heroBackground">
-        <img src="chiikawa.jpg" alt="Background" class="hero-image" id="heroImage">
-        <div class="hero-overlay"></div>
-    </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
     </button>
-    <div class="container">
-        <header class="header">
-            <div class="gallery-header">
-                <a href="index.html" class="back-link">← Back to Home</a>
-                <h1 class="gallery-title">Photography Gallery</h1>
-            </div>
+
+    <div class="cinema-gallery">
+        <header class="cinema-gallery-header">
+            <a href="index.html" class="back-link">&larr; Back to Home</a>
+            <h1 class="cinema-gallery-heading">Photography Gallery</h1>
         </header>
 
-        <main class="gallery-content">
-            <div class="albums-grid" id="albumsGrid">
-                <!-- Album Collection 1: Joshua Tree -->
-                <div class="album-collection" data-album="1">
-                    <a href="album1.html" class="album-cover-link">
-                        <div class="album-cover">
-                            <div class="album-cover-image">
-                                <img src="joshuatree/CFD6C67A-4CF2-49FB-B7CA-A8CF6142DDFE.jpeg" alt="Joshua Tree Cover" class="album-photo">
-                            </div>
-                            <p class="album-location">Joshua Tree</p>
-                        </div>
-                    </a>
-                </div>
+        <div class="cinema-list">
 
-                <!-- Album Collection 2: Firework -->
-                <div class="album-collection" data-album="2">
-                    <a href="album2.html" class="album-cover-link">
-                        <div class="album-cover">
-                            <div class="album-cover-image">
-                                <img src="fireworks/FEDB2FEA-DFC7-4421-AFAE-5D34F98E6992.jpeg" alt="Firework Cover" class="album-photo">
-                            </div>
-                            <p class="album-location">Firework</p>
-                        </div>
-                    </a>
+            <a href="album7.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="istanbul/B73CE4B4-4D28-431D-AB19-D1982262F418.jpeg" alt="Istanbul" class="cinema-image">
                 </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Istanbul</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2025-12</span>
+                    </div>
+                    <p class="cinema-desc">Where East meets West — mosques, bazaars, and the Bosphorus</p>
+                    <div class="cinema-stats">17 Photos</div>
+                </div>
+            </a>
 
-                <!-- Album Collection 3: Irvine -->
-                <div class="album-collection" data-album="3">
-                    <a href="album3.html" class="album-cover-link">
-                        <div class="album-cover">
-                            <div class="album-cover-image">
-                                <img src="irvine/FB35AD20-E6A0-435A-B89C-8F79B2F52E43_1_105_c.jpeg" alt="Irvine Cover" class="album-photo">
-                            </div>
-                            <p class="album-location">Irvine</p>
-                        </div>
-                    </a>
+            <a href="album8.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="winchester/0E3043BF-A992-4FB2-839C-F53E2C044708.jpeg" alt="Winchester" class="cinema-image">
                 </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Winchester</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2026-01</span>
+                    </div>
+                    <p class="cinema-desc">Medieval streets and the ancient capital of England</p>
+                    <div class="cinema-stats">9 Photos</div>
+                </div>
+            </a>
 
-                <!-- Album Collection 4: Flowers&Birds -->
-                <div class="album-collection" data-album="4">
-                    <a href="album4.html" class="album-cover-link">
-                        <div class="album-cover">
-                            <div class="album-cover-image">
-                                <img src="others/E032FB26-535A-4AC9-A815-4A1DF85994A7_1_105_c.jpeg" alt="Flowers&Birds Cover" class="album-photo">
-                            </div>
-                            <p class="album-location">Flowers&Birds</p>
-                        </div>
-                    </a>
+            <a href="album2.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="fireworks/FEDB2FEA-DFC7-4421-AFAE-5D34F98E6992.jpeg" alt="Firework" class="cinema-image">
                 </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Fireworks</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2025-11</span>
+                    </div>
+                    <p class="cinema-desc">Light trails painting the summer night sky</p>
+                    <div class="cinema-stats">10 Photos</div>
+                </div>
+            </a>
 
-                <!-- Album Collection 5: Sea in La Jolla -->
-                <div class="album-collection" data-album="5">
-                    <a href="album5.html" class="album-cover-link">
-                        <div class="album-cover">
-                            <div class="album-cover-image">
-                                <img src="sea/660200CF-D4EC-419D-8E09-B275A13F04DF_1_105_c.jpeg" alt="Sea in La Jolla Cover" class="album-photo">
-                            </div>
-                            <p class="album-location">Sea in La Jolla</p>
-                        </div>
-                    </a>
+            <a href="album1.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="joshuatree/CFD6C67A-4CF2-49FB-B7CA-A8CF6142DDFE.jpeg" alt="Joshua Tree" class="cinema-image">
                 </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Joshua Tree National Park</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2025-06</span>
+                    </div>
+                    <p class="cinema-desc">Starry desert nights and ancient rock formations</p>
+                    <div class="cinema-stats">7 Photos</div>
+                </div>
+            </a>
 
-                <!-- Album Collection 6: Geisel Library -->
-                <div class="album-collection" data-album="6">
-                    <a href="album6.html" class="album-cover-link">
-                        <div class="album-cover">
-                            <div class="album-cover-image">
-                                <img src="ucsd/42152907-1BF8-450D-BCC4-F241F186780D.jpeg" alt="Geisel Library Cover" class="album-photo">
-                            </div>
-                            <p class="album-location">Geisel Library</p>
-                        </div>
-                    </a>
+            <a href="album3.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="irvine/FB35AD20-E6A0-435A-B89C-8F79B2F52E43_1_105_c.jpeg" alt="Irvine" class="cinema-image">
                 </div>
-            </div>
-        </main>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Irvine</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2025-05</span>
+                    </div>
+                    <p class="cinema-desc">Quiet suburban beauty in Southern California</p>
+                    <div class="cinema-stats">4 Photos</div>
+                </div>
+            </a>
+
+            <a href="album5.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="sea/660200CF-D4EC-419D-8E09-B275A13F04DF_1_105_c.jpeg" alt="Sea in La Jolla" class="cinema-image">
+                </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Sea in La Jolla</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2024-08</span>
+                    </div>
+                    <p class="cinema-desc">Pacific coastline, tide pools, and golden-hour shores</p>
+                    <div class="cinema-stats">23 Photos</div>
+                </div>
+            </a>
+
+            <a href="album4.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="others/E032FB26-535A-4AC9-A815-4A1DF85994A7_1_105_c.jpeg" alt="Flowers & Birds" class="cinema-image">
+                </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Flowers &amp; Birds</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2024-04</span>
+                    </div>
+                    <p class="cinema-desc">Close encounters with feathers, petals, and light</p>
+                    <div class="cinema-stats">16 Photos</div>
+                </div>
+            </a>
+
+            <a href="album6.html" class="cinema-row">
+                <div class="cinema-image-wrap">
+                    <img src="ucsd/42152907-1BF8-450D-BCC4-F241F186780D.jpeg" alt="Geisel Library" class="cinema-image">
+                </div>
+                <div class="cinema-overlay">
+                    <h2 class="cinema-title">Geisel Library</h2>
+                    <div class="cinema-meta">
+                        <span class="cinema-meta-item"><span class="cinema-icon">&#9744;</span> 2024-08</span>
+                    </div>
+                    <p class="cinema-desc">The iconic brutalist landmark of UC San Diego</p>
+                    <div class="cinema-stats">3 Photos</div>
+                </div>
+            </a>
+
+        </div>
     </div>
 </body>
 </html>
-
