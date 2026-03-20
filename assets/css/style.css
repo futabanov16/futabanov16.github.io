@@ -524,6 +524,32 @@ body.dark-theme {
     color: var(--gold);
 }
 
+/* ---- Contact icons ---- */
+.contact-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--accent-color);
+}
+
+.contact-link svg {
+    flex-shrink: 0;
+}
+
 /* ---- Research Items - 卷轴卡片风格 ---- */
 .research-list {
     display: flex;

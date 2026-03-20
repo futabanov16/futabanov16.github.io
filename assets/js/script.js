@@ -76,14 +76,26 @@ function updateScrolledClass() {
 window.addEventListener('scroll', updateScrolledClass);
 updateScrolledClass();
 
-// Update last updated date
+// Update last updated date from GitHub API (last push time)
 function updateLastUpdated() {
     const lastUpdatedElement = document.getElementById('lastUpdated');
-    if (lastUpdatedElement) {
-        const now = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        lastUpdatedElement.textContent = now.toLocaleDateString('en-US', options);
-    }
+    if (!lastUpdatedElement) return;
+
+    fetch('https://api.github.com/repos/futabanov16/futabanov16.github.io')
+        .then(res => res.json())
+        .then(data => {
+            if (data.pushed_at) {
+                const date = new Date(data.pushed_at);
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                lastUpdatedElement.textContent = date.toLocaleDateString('en-US', options);
+            }
+        })
+        .catch(() => {
+            // Fallback to current date if API fails
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            lastUpdatedElement.textContent = now.toLocaleDateString('en-US', options);
+        });
 }
 
 // Run on load
