@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "d:\\futabanov16.github.io"
+    ],
+    "allow": [
+      "Bash(start index.html)"
+    ]
+  }
+}
